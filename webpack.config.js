@@ -3,12 +3,16 @@ module.exports = {
     main: './main.js'
   },
   mode: 'development',
-  modules: {
+  module: {
     rules: [
       {
         test: /\.js$/,
         use: [{
-          loader: 'babel-loader'
+          loader: 'babel-loader',
+          options: {
+            presets: [ "@babel/preset-env" ],
+            plugins: [["@babel/plugin-transform-react-jsx", {pragma: 'CreateElement'}]]
+          }
         }]
       }
     ]

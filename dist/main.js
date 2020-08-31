@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\n\n//# sourceURL=webpack:///./main.js?");
+eval("function CreateElement(tagName, attribute, children) {// const tag = document.createElement(tagName)\n  // for(let attr in attribute ) {\n  //   tag.setAttribute(attr, attribute[attr])\n  // }\n  // if(Object.prototype.toString.call() === \"[object String]\") {\n  //   return tag.appendChild(children)\n  // } else {\n  // }\n}\n\nvar a = CreateElement(\"div\", {\n  \"class\": \"name\"\n}, CreateElement(\"div\", null, \"aaa\"), CreateElement(\"div\", null, \"vvv\"), CreateElement(\"div\", null, \"bbb\"));\n\n//# sourceURL=webpack:///./main.js?");
 
 /***/ })
 
