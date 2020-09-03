@@ -1,19 +1,21 @@
+import { CreateElement, render, Component } from './toy-react'
 
-function CreateElement(tagName, attribute, children) {
-  const tag = document.createElement(tagName)
-  for(let attr in attribute ) {
-    tag.setAttribute(attr, attribute[attr])
-  }
-  if(Object.prototype.toString.call() === "[object String]") {
-    return tag.appendChild(children)
-  } else {
 
+class MyComponent extends Component {
+  render() {
+    return (
+      <div>
+        <h1>My Component</h1>
+        {this.children}
+      </div>
+    )
   }
 }
 
-const a = (<div class="name">
+render(<MyComponent class="name">
     <div>aaa</div>
     <div>vvv</div>
     <div>bbb</div>
-  </div>
+  </MyComponent>,
+  document.body
 )
