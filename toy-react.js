@@ -1,5 +1,16 @@
 
 
+// 数组展平
+function flatten(arr) {
+  return arr.reduce((res, currentValue) => {
+    if( Array.isArray(currentValue)) {
+      return [...res, ...flatten(currentValue)]
+    } else {
+      return [...res, currentValue]
+    }
+  }, [])
+}
+
 class ElementWrapper {
   constructor(type) {
     this.root = document.createElement(type)
@@ -51,6 +62,9 @@ export function CreateElement(tagName, attribute, ...children) {
   for(let attr in attribute ) {
     tag.setAttribute(attr, attribute[attr])
   }
+  // 数组展平
+  children = flatten(children)
+
   for(let child of children) {
     if(typeof child === 'string') {
       child = new TextNodeWrapper(child)
