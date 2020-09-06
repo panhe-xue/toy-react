@@ -1,30 +1,30 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js install
+  C:\Program Files\nodejs\node.exe C:\Users\mi\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
 
 PATH: 
-  /Library/Java/JavaVirtualMachines/jdk-13.0.1.jdk/Contents/Home/bin:/Users/apple/Desktop/practice/flutter/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/apple/Documents/ffmpeg-4.1.3-macos64-static/bin:/Library/Java/JavaVirtualMachines/jdk-13.0.1.jdk/Contents/Home/bin:/Users/apple/Desktop/practice/flutter/flutter/bin:/usr/local/mysql/bin:.:/Users/apple/Library/Android/sdk/platform-tools:/Users/apple/Library/Android/sdk/tools:/Users/apple/Library/Android/sdk/build-tools:/usr/local/mysql/bin:.:/Users/apple/Library/Android/sdk/platform-tools:/Users/apple/Library/Android/sdk/tools:/Users/apple/Library/Android/sdk/build-tools
+  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Users\mi\AppData\Local\Microsoft\WindowsApps;;C:\备份数据\D盘\Vscode\Microsoft VS Code\bin;C:\Users\mi\AppData\Roaming\npm
 
 Yarn version: 
-  1.17.3
+  1.22.4
 
 Node version: 
-  12.10.0
+  14.4.0
 
 Platform: 
-  darwin x64
+  win32 x64
 
 Trace: 
-  Error: http://nexus.pm.bwoilmarine.com/repository/npm_group/@babel/template/-/template-7.10.4.tgz: Request failed "404 Not Found"
-      at ResponseError.ExtendableBuiltin (/usr/local/Cellar/yarn/1.17.3/libexec/lib/cli.js:696:66)
-      at new ResponseError (/usr/local/Cellar/yarn/1.17.3/libexec/lib/cli.js:802:124)
-      at Request.<anonymous> (/usr/local/Cellar/yarn/1.17.3/libexec/lib/cli.js:66900:16)
-      at Request.emit (events.js:209:13)
-      at Request.module.exports.Request.onRequestResponse (/usr/local/Cellar/yarn/1.17.3/libexec/lib/cli.js:141341:10)
-      at ClientRequest.emit (events.js:209:13)
-      at HTTPParser.parserOnIncomingClient [as onIncoming] (_http_client.js:583:27)
-      at HTTPParser.parserOnHeadersComplete (_http_common.js:115:17)
-      at Socket.socketOnData (_http_client.js:456:22)
-      at Socket.emit (events.js:209:13)
+  Error: http://nexus.pm.bwoilmarine.com/repository/npm_group/@babel/core/-/core-7.11.4.tgz: Request failed "404 Not Found"
+      at ResponseError.ExtendableBuiltin (C:\Users\mi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:696:66)
+      at new ResponseError (C:\Users\mi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:802:124)
+      at Request.<anonymous> (C:\Users\mi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:67057:16)
+      at Request.emit (events.js:315:20)
+      at Request.module.exports.Request.onRequestResponse (C:\Users\mi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141625:10)
+      at ClientRequest.emit (events.js:315:20)
+      at HTTPParser.parserOnIncomingClient (_http_client.js:639:27)
+      at HTTPParser.parserOnHeadersComplete (_http_common.js:117:17)
+      at Socket.socketOnData (_http_client.js:507:22)
+      at Socket.emit (events.js:315:20)
 
 npm manifest: 
   {

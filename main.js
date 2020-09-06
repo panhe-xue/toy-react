@@ -13,6 +13,10 @@ class MyComponent extends Component {
     return (
       <div>
         <h1>My Component</h1>
+        <button onClick={() => {
+          this.state.a++;
+          // this.rerender()
+        }}>增加</button>
         <p>{this.state.a.toString()}</p>
         {this.children}
       </div>
@@ -27,3 +31,11 @@ render(<MyComponent class="name">
   </MyComponent>,
   document.body
 )
+
+// const com = <MyComponent class="name">
+// <div>aaa</div>
+// <div>vvv</div>
+// <div>bbb</div>
+// </MyComponent>
+
+// console.log(com.vdom)
