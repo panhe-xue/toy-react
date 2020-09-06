@@ -1,3 +1,4 @@
+const RENDER_TO_DOM = Symbol("render to dom")
 
 
 // 数组展平
@@ -18,14 +19,26 @@ class ElementWrapper {
   setAttribute(name, value) {
     this.root.setAttribute(name, value)
   }
-  appendChild(child) {
-    this.root.appendChild(child.root)
+  appendChild(component) {
+    let range = document.createRange()
+    range.setStart(this.root, this.root.childNodes.length)
+    range.setEnd(this.root, this.root.childNodes.length)
+    range.deleteContents()
+    component[RENDER_TO_DOM](range)
+  }
+  [RENDER_TO_DOM](range) {
+    range.deleteContents()
+    range.insertNode(this.root)
   }
 }
 
 class TextNodeWrapper {
   constructor(type) {
     this.root = document.createTextNode(type)
+  }
+  [RENDER_TO_DOM](range) {
+    range.deleteContents()
+    range.insertNode(this.root)
   }
 }
 
@@ -36,6 +49,7 @@ export class Component {
     this.props = Object.create(null)
     this.children = []
     this._root = null
+    this._range = null
   }
   setAttribute(name, value) {
     this.props[name] = value
@@ -44,11 +58,14 @@ export class Component {
     this.children.push(component)
   }
 
-  get root() {
-    if(!this._root) this._root = this.render().root
-    return this._root
+  [RENDER_TO_DOM](range) {
+    this._range = range
+    this.render()[RENDER_TO_DOM](range)
   }
-
+  rerender() {
+    this._range.deleteContents()
+    this[RENDER_TO_DOM](this._range)
+  }
 }
 
 export function CreateElement(tagName, attribute, ...children) {
@@ -56,9 +73,9 @@ export function CreateElement(tagName, attribute, ...children) {
   if(typeof tagName === "string") {
     tag = new ElementWrapper(tagName)
   } else {
-    tag = new tagName() 
+    tag = new tagName()
   }
-  
+
   for(let attr in attribute ) {
     tag.setAttribute(attr, attribute[attr])
   }
@@ -75,5 +92,9 @@ export function CreateElement(tagName, attribute, ...children) {
 }
 
 export function render(component, parents) {
-  parents.appendChild(component.root)
+  let range = document.createRange()
+  range.setStart(parents, 0)
+  range.setStart(parents, parents.childNodes.length)
+  range.deleteContents()
+  component[RENDER_TO_DOM](range)
 }

@@ -2,10 +2,18 @@ import { CreateElement, render, Component } from './toy-react'
 
 
 class MyComponent extends Component {
+  constructor() {
+    super()
+    this.state= {
+      a: 1,
+      b: 2
+    }
+  }
   render() {
     return (
       <div>
         <h1>My Component</h1>
+        <p>{this.state.a.toString()}</p>
         {this.children}
       </div>
     )
