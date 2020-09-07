@@ -87,15 +87,12 @@ export class Component {
     update(this._vdom, vdom)
     this._vdom = vdom
   }
-  // rerender() {
-  //   this._range.deleteContents()
-  //   this[RENDER_TO_DOM](this._range)
-  // }
   get vdom() {
 
     return this.render().vdom
   }
   setState(newState) {
+    
     if(this.state === null || typeof this.state !== 'object') {
       this.state = newState
       // this.rerender()
@@ -112,6 +109,7 @@ export class Component {
       }
     }
     merge(this.state, newState)
+
     this.update()
   }
 }
@@ -121,25 +119,6 @@ class ElementWrapper extends Component {
     super(type)
     this.type = type
   }
-  /*
-  setAttribute(name, value) {
-    if(name.match(/^on([\s\S]+)/)) {
-      this.root.addEventListener(RegExp.$1.replace(/^[\s\S]/, i => i.toLowerCase()), value)
-    } else {
-      if(name === 'className') {
-        this.root.setAttribute('class', value)
-      } else {
-        this.root.setAttribute(name, value)
-      }
-    }
-  }
-  appendChild(component) {
-    let range = document.createRange()
-    range.setStart(this.root, this.root.childNodes.length)
-    range.setEnd(this.root, this.root.childNodes.length)
-    range.deleteContents()
-    component[RENDER_TO_DOM](range)
-  } */
   [RENDER_TO_DOM](range) {
     this._range = range
 
@@ -170,11 +149,6 @@ class ElementWrapper extends Component {
   get vdom() {
     this.vchildren = this.children.map(child => child.vdom)
     return this
-    // return {
-    //   type: this.type,
-    //   props: this.props,
-    //   children: this.children.map(child => child.vdom)
-    // }
   }
 }
 
@@ -192,10 +166,6 @@ class TextNodeWrapper extends Component {
   }
   get vdom() {
     return this
-    // return {
-    //   type: this.type,
-    //   content: this.content
-    // }
   }
 }
 
@@ -209,15 +179,15 @@ function replaceContent(range, node) {
 }
 
 export function CreateElement(tagName, attribute, ...children) {
-  let tag;
+  let vElement;
   if(typeof tagName === "string") {
-    tag = new ElementWrapper(tagName)
+    vElement = new ElementWrapper(tagName)
   } else {
-    tag = new tagName()
+    vElement = new tagName()
   }
 
   for(let attr in attribute ) {
-    tag.setAttribute(attr, attribute[attr])
+    vElement.setAttribute(attr, attribute[attr])
   }
   // 数组展平
   children = flatten(children)
@@ -226,9 +196,9 @@ export function CreateElement(tagName, attribute, ...children) {
     if(typeof child === 'string') {
       child = new TextNodeWrapper(child)
     }
-    tag.appendChild(child)
+    vElement.appendChild(child)
   }
-  return tag
+  return vElement
 }
 
 export function render(component, parents) {

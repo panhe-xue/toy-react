@@ -14,7 +14,9 @@ class MyComponent extends Component {
       <div>
         <h1>My Component</h1>
         <button onClick={() => {
-          this.state.a++;
+          this.setState({
+            a: ++this.state.a
+          })
           // this.rerender()
         }}>增加</button>
         <p>{this.state.a.toString()}</p>
@@ -28,6 +30,7 @@ render(<MyComponent class="name">
     <div>aaa</div>
     <div>vvv</div>
     <div>bbb</div>
+    <div>fff</div>
   </MyComponent>,
   document.body
 )
